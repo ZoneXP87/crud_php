@@ -28,9 +28,18 @@ class BaseController extends Controller
      */
     protected $request;
 
-    protected $homeView = [
+    protected $defaultView = [
         'navbar'  => true,
-        'title'   => 'Crud de usuarios',
+        'css'     => [],
+        'js'      => [],
+        'modal'   => [
+            'title'         => '',
+            'body'          => 'parts/modal',
+            'closeable'     => true,
+            'cancelBtnTxt'  => 'Cancelar',
+            'okBtnTxt'      => 'Aceptar',
+        ],
+        'title'   => 'Bienvenido',
         'favicon' => 'assets/img/favicon.png',
         'content' => 'home',
         'footer'  => true
@@ -56,6 +65,10 @@ class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
+    }
+
+    public function getDefaultView() {
+        return $this->defaultView;
     }
 
     protected function loadViewParts($parts = [])

@@ -6,7 +6,7 @@ class Home extends BaseController
 {
     public function index()
     {
-        return $this->loadViewParts($this->homeView);
+        return $this->loadViewParts($this->defaultView);
     }
 
 }

@@ -7,20 +7,29 @@ class UserController extends BaseController
 {
     public function create()
     {
-        if ($this->request->getMethod() == "post")
-        {
-            
+        $users = new UserModel();
+        $defaultView = $this->getDefaultView();
+        $defaultView['content'] = 'sections/users/index';
+        $defaultView['js'] = ['users'];
+        $defaultView['users'] = $users->findAll();
+        if ($this->request->getMethod() == "post") {
+            echo '<pre>';
+            echo 'is post';
+            var_dump($this->request->getPost());
         }
-        
-        return view("users/create");
+        die();
+        return $this->loadViewParts($defaultView);
     }
 
     public function read()
     {
-        $users = new UserModel();
-        
+        $users = new UserModel();        
+        $defaultView = $this->getDefaultView();
+        $defaultView['content'] = 'sections/users/index';
+        $defaultView['js'] = ['users'];
+        $defaultView['users'] = $users->findAll();
         // List all users
-        return view("users/index", array("users" => $users->findAll()));
+        return $this->loadViewParts($defaultView);
     }   
 
     public function update()
