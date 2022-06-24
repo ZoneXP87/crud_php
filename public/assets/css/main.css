@@ -222,3 +222,10 @@ table.table .avatar {
 .modal form label {
 	font-weight: normal;
 }
+
+.alert.alert-error {
+	background-color: inherit;
+    border-color: transparent;
+    padding-top: 0.2em;
+    padding-bottom: 0;
+}

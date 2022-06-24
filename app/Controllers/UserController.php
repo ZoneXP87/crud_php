@@ -13,11 +13,11 @@ class UserController extends BaseController
         $defaultView['js'] = ['users'];
         $defaultView['users'] = $users->findAll();
         if ($this->request->getMethod() == "post") {
-            echo '<pre>';
-            echo 'is post';
-            var_dump($this->request->getPost());
+            if ($users->save($this->request->getPost()) == false) {
+                $defaultView['errors'] = $users->errors();
+                $defaultView['old'] = $this->request->getPost();
+            }
         }
-        die();
         return $this->loadViewParts($defaultView);
     }
 
